@@ -39,9 +39,9 @@
   --show-sun:block; --show-moon:none; color-scheme:dark}
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;transition:background-color .25s ease,color .25s ease;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.wrap{max-width:1040px;margin:0 auto}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;transition:background-color .25s ease,color .25s ease}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
 a{color:inherit;text-decoration-color:var(--signal);text-underline-offset:3px}
 a:hover{color:var(--signal)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:4px}
@@ -52,8 +52,9 @@ p{margin:0}
 
 /* nav */
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
-  padding-block:16px;background:var(--nav-bg);box-shadow:0 0 0 100vmax var(--nav-bg),0 1px 0 100vmax var(--line);clip-path:inset(0 -100vmax -1px);-webkit-backdrop-filter:saturate(160%) blur(12px);backdrop-filter:saturate(160%) blur(12px)}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nav-bg);border-bottom:1px solid var(--line);
+  -webkit-backdrop-filter:saturate(160%) blur(12px);backdrop-filter:saturate(160%) blur(12px);transition:background-color .25s ease}
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px}
 nav .right{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .toggle{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .2s,transform .2s}
 .toggle:hover{border-color:var(--signal);color:var(--signal)}
@@ -177,8 +178,8 @@ footer{padding-block:28px 40px;color:var(--muted);font-size:13.5px;border-top:1p
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
-<div class="wrap" id="top">
-  <nav aria-label="Main">
+<header class="topbar" id="top">
+  <nav class="wrap" aria-label="Main">
     <a class="who" href="#top" style="text-decoration:none">Ye Win Tay Za</a>
     <ul class="links">
       <li><a href="#work">Work</a></li>
@@ -195,6 +196,8 @@ footer{padding-block:28px 40px;color:var(--muted);font-size:13.5px;border-top:1p
       </button>
     </div>
   </nav>
+</header>
+<div class="wrap">
 
   <header class="hero">
     <div>
